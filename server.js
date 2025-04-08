@@ -50,12 +50,19 @@ const RESTAURANT = {
     ]
   }
 app.get('/', (req, res) => {
-  return res.render('home.ejs', {
-    RESTAURANT,
-    if(isOpen){
-        return res.send('We are closed but will be open tomorrow!')
+    if(RESTAURANT.isOpen){
+        return res.render('home.ejs', {
+            RESTAURANT,
+          });
+    } else {
+        return res.render('home.ejs', {
+            RESTAURANT,
+            // console.log("restaurant closed");
+            
+          });
+        
     }
-  });
+  
 });
 app.get('/menu', (req, res) => {
     return res.render('menu.ejs', {
